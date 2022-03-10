@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Options</title>
 <script defer src="options.js"></script></head>
+
 <body>
-  
+  <div class="fontSize">
+    <label for="url">作用的网址：</label>
+    <input id="url" type="text" autocomplete="off" placeholder="请输入执行的网址，支持正则" class="el-input__inner">
+    <br />
+    <label for="js">执行的代码：</label>
+    <textarea id="js" autocomplete="off" rows="2" placeholder="请输入内容" class="el-textarea__inner"
+      style="min-height: 33px;"></textarea>
+    <br />
+    <label>作用的时机：</label>
+    <input type="radio" id="radio1" name="radio1" tabindex="-1" autocomplete="off"  value="1">
+    <label for="radio1">Huey</label>
+    <input type="radio"  name="radio1" tabindex="-1" autocomplete="off"  value="1">
+  </div>
 </body>
+
 </html>

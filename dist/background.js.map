@@ -1,0 +1,1 @@
+{"version":3,"file":"background.js","mappings":";;;;;;AAAA;AACA;AACA","sources":["webpack://crx-tool/./src/background.ts"],"sourcesContent":["\"use strict\";\r\nconst str = 'Gz';\r\nconsole.log(str);\r\n"],"names":[],"sourceRoot":""}

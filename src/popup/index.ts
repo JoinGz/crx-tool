@@ -1,5 +1,9 @@
-const str: string = 'popup'
+import "../common/base.css"
 
-console.log(str);
+const moreBtn = document.querySelector('#moreBtn')
+
+moreBtn?.addEventListener('click', () => {
+  chrome.tabs.create({url: './options.html'});
+})
 
 export {}

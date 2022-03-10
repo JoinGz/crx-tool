@@ -1,5 +1,3 @@
-const str: string = 'options'
-
-console.log(str);
+import "../common/base.css"
 
 export {}
