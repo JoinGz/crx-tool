@@ -8,13 +8,21 @@ const output = resolve(__dirname, '../dist')
 
 export default {
   entry: {
-    options: './src/options/index.js',
-    popup: './src/popup/index.js',
-    background: './src/background.js',
+    options: './src/options/index.ts',
+    popup: './src/popup/index.ts',
+    background: './src/background.ts',
   },
   output: {
     filename: '[name].js',
     path: output,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.ts$/,
+        loader: 'ts-loader',
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
