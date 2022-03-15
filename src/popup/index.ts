@@ -1,5 +1,6 @@
 import '../common/base.css'
 
+console.log(`popup.js-被执行了`)
 // 更多按钮
 const moreBtn = document.querySelector('#moreBtn')
 
@@ -53,34 +54,50 @@ injectJSBtn?.addEventListener('click', async () => {
   const tab = await getCurrentTab()
   // console.log('clicked', tab)
 
-  // chrome.scripting.executeScript({
-  //   target: { tabId: tab?.id as number },
-  //   func: () => {
-  //     console.log(`inject-js`)
-  //     console.log(window.$)
-  //   },
-  // })
-
-  // *******************************************
-
- 
-
   chrome.scripting.executeScript({
     target: { tabId: tab?.id as number },
     func: () => {
-      const s = document.createElement('script')
-      const url = chrome.runtime.getURL('baidu.js')
-    
-    
-      s.setAttribute(
-        'src',
-        url
-      )
-      document.documentElement.appendChild(s)
+      console.log(`inject-js`)
+      console.log(window.$)
+      chrome.runtime.sendMessage('get-user-data', (response) => {
+        // 3. Got an asynchronous response with the data from the background
+        console.log('received user data', response)
+      })
     },
   })
 
+  // *******************************************
+
+  // chrome.scripting.executeScript({
+  //   target: { tabId: tab?.id as number },
+  //   func: () => {
+  //     const s = document.createElement('script')
+  //     const url = chrome.runtime.getURL('baidu.js')
+
+  //     s.setAttribute('src', url)
+  //     document.documentElement.appendChild(s)
+  //   },
+  // })
+
   console.log('over')
+})
+
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//   // 2. A page requested user data, respond with a copy of `user`
+
+//   console.log(`我收到了消息-popup`, message, sender)
+//   if (message === 'get-user-data') {
+//     sendResponse('user')
+//   }
+// })
+
+const sndMsgBtn = document.querySelector('#sendMsg')
+
+sndMsgBtn?.addEventListener('click', (e) => {
+  chrome.runtime.sendMessage('get-user-data', (response) => {
+    // 3. Got an asynchronous response with the data from the background
+    console.log('received user data', response)
+  })
 })
 
 export {}

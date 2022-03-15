@@ -29,6 +29,11 @@
       "matches": ["https://boss.zbj.com/*"],
       "js": ["boss-zbj.js"],
       "run_at": "document_idle"
+    },
+    {
+      "matches": ["*://*.baidu.com/*"],
+      "js": ["content-script.js"],
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
