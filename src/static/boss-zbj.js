@@ -1,5 +1,6 @@
 let time = 0;
 let rId;
+let onloadReginFn = false;
 
 function deletedModal () {
   const changepwd = document.querySelector('.changepwd-modal')
@@ -11,11 +12,15 @@ function deletedModal () {
     }, 20);
   } else {
     time++;
-    if (time > 60 * 5) { // 5s 60hz 
+    if (time > 60 * 50) { // 50s 60hz (最大时间，兜底load)
       cancelAnimationFrame(rId)
       return
     }
     rId = requestAnimationFrame(deletedModal)
+    if (!onloadReginFn) {
+      onloadReginFn = true
+      document.addEventListener('load', ()=> cancelAnimationFrame(rId))
+    }
   }
 }
 
